@@ -41,13 +41,20 @@ local function OnEvent(self, event)
 	if (CanMerchantRepair()) then	
 		repairAllCost, canRepair = GetRepairAllCost();
 		-- If merchant can repair and there is something to repair
-		if (canRepair) then
+		if (canRepair and repairAllCost > 0) then
 			-- Use Guild Bank
 			guildRepairedItems = false
 			if (IsInGuild() and CanGuildBankRepair()) then
-				RepairAllItems(true);
-				guildRepairedItems = true
-				DEFAULT_CHAT_FRAME:AddMessage("Equipement has been repaired by your Guild", 255, 255, 255)
+				-- Checks if guild has enough money
+				local amount = GetGuildBankWithdrawMoney()
+				local guildBankMoney = GetGuildBankMoney()
+				amount = amount == -1 and guildBankMoney or min(amount, guildBankMoney)
+
+				if (amount >= repairAllCost) then
+					RepairAllItems(true);
+					guildRepairedItems = true
+					DEFAULT_CHAT_FRAME:AddMessage("Equipement has been repaired by your Guild", 255, 255, 255)
+				end
 			end
 			
 			-- Use own funds
