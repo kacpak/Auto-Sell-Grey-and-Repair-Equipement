@@ -2,7 +2,7 @@
 Name: Auto Sell Grey & Repair
 Description: Sells grey items and repairs your items using guild funds if possible
 
-Copyright 2016 Mateusz Kasprzak
+Copyright 2017 Mateusz Kasprzak
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -53,14 +53,14 @@ local function OnEvent(self, event)
 				if (amount >= repairAllCost) then
 					RepairAllItems(true);
 					guildRepairedItems = true
-					DEFAULT_CHAT_FRAME:AddMessage("Equipement has been repaired by your Guild", 255, 255, 255)
+					DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired by your Guild", 255, 255, 255)
 				end
 			end
 			
 			-- Use own funds
 			if (repairAllCost <= GetMoney() and not guildRepairedItems) then
 				RepairAllItems(false);
-				DEFAULT_CHAT_FRAME:AddMessage("Equipement has been repaired for "..GetCoinTextureString(repairAllCost), 255, 255, 255)
+				DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired for "..GetCoinTextureString(repairAllCost), 255, 255, 255)
 			end
 		end
 	end
