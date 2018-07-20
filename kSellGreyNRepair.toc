@@ -1,8 +1,8 @@
-## Interface: 70300
+## Interface: 80000
 ## Title: Auto Sell Grey & Repair
 ## Notes: Sells grey items and repairs your items using guild funds if possible
 ## Author: Mateusz Kasprzak
-## Version: 1.3
+## Version: 1.4
 
 ## X-License: Apache 2.0
 ## X-Category: Miscellaneous
