@@ -29,6 +29,7 @@ local function OnEvent(self, event)
 				if itemRarity == 0 and itemSellPrice ~= 0 then
 					totalPrice = totalPrice + (itemSellPrice * itemCount)
 					UseContainerItem(myBags, bagSlots)
+					PickupMerchantItem()
 				end
 			end
 		end
