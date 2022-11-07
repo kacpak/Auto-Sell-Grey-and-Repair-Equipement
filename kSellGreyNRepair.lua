@@ -17,6 +17,27 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ]]
 
+SLASH_ASGRE = "/asgre"
+use_guild_funds = false
+
+local function ToggleGuildRepairs()
+    if use_guild_funds then
+        use_guild_funds = false
+        DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now disabled. ")
+    else
+        use_guild_funds = true
+        DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now enabled.")
+    end
+end
+
+SlashCmdList["ASGRE"] = function(msg)
+    -- '/asgre guild' will enable or disable guild repairs depending on current
+    -- state
+    if msg and msg == "guild" then
+        ToggleGuildRepairs(msg)
+    end
+end
+
 local function OnEvent(self, event)
 	-- Auto Sell Grey Items
 	totalPrice = 0	
@@ -45,7 +66,7 @@ local function OnEvent(self, event)
 		if (canRepair and repairAllCost > 0) then
 			-- Use Guild Bank
 			guildRepairedItems = false
-			if (IsInGuild() and CanGuildBankRepair()) then
+			if (IsInGuild() and CanGuildBankRepair() and use_guild_funds) then
 				-- Checks if guild has enough money
 				local amount = GetGuildBankWithdrawMoney()
 				local guildBankMoney = GetGuildBankMoney()
