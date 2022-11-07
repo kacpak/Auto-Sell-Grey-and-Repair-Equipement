@@ -36,7 +36,7 @@ SlashCmdList["ASGRE"] = function(msg)
         -- '/asgre guild' will enable or disable guild repairs depending on current
         -- state
         if msg and msg == "guild" then
-                ToggleGuildRepairs(msg)
+                ToggleGuildRepairs()
         end
 end
 
