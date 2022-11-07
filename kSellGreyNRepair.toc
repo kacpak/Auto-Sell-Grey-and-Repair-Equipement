@@ -9,6 +9,6 @@
 
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
-## SavedVariablesPerCharacter: use_guild_funds
+## SavedVariablesPerCharacter: useGuildFunds
 
 kSellGreyNRepair.lua

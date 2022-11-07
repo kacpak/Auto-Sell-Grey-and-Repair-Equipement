@@ -20,17 +20,17 @@ limitations under the License.
 SLASH_ASGRE1 = "/asgre"
 
 -- Set to disabled by default
--- use_guild_funds is a variable saved by character
-if use_guild_funds == nil then
-    use_guild_funds = false
+-- useGuildFunds is a variable saved by character
+if useGuildFunds == nil then
+        useGuildFunds = false
 end
 
 local function ToggleGuildRepairs()
-        if use_guild_funds then
-                use_guild_funds = false
+        if useGuildFunds then
+                useGuildFunds = false
                 DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now disabled.")
         else
-                use_guild_funds = true
+                useGuildFunds = true
                 DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now enabled.")
         end
 end
@@ -71,7 +71,7 @@ local function OnEvent(self, event)
 		if (canRepair and repairAllCost > 0) then
 			-- Use Guild Bank
 			guildRepairedItems = false
-			if (IsInGuild() and CanGuildBankRepair() and use_guild_funds) then
+			if (IsInGuild() and CanGuildBankRepair() and useGuildFunds) then
 				-- Checks if guild has enough money
 				local amount = GetGuildBankWithdrawMoney()
 				local guildBankMoney = GetGuildBankMoney()
