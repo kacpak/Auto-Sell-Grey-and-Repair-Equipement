@@ -18,9 +18,12 @@ limitations under the License.
 ]]
 
 SLASH_ASGRE1 = "/asgre"
--- Guild repairs off by default, I noticed someone in the comments on the addon
--- mentioning that this may be poor early guild etiquette
-use_guild_funds = false
+
+-- Set to disabled by default
+-- use_guild_funds is a variable saved by character
+if use_guild_funds == nil then
+    use_guild_funds = false
+end
 
 local function ToggleGuildRepairs()
         if use_guild_funds then
