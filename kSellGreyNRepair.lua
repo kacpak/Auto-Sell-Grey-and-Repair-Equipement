@@ -41,9 +41,9 @@ local function OnEvent(self, event)
 	-- Auto Repair
 	if (CanMerchantRepair()) then	
 		repairAllCost, canRepair = GetRepairAllCost();
-                costTextureString = GetCoinTextureString(repairAllCost);
 		-- If merchant can repair and there is something to repair
 		if (canRepair and repairAllCost > 0) then
+                    costTextureString = GetCoinTextureString(repairAllCost);
 			-- Use Guild Bank
 			guildRepairedItems = false
 			if (IsInGuild() and CanGuildBankRepair()) then
