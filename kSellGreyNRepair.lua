@@ -17,7 +17,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ]]
 
-SLASH_ASGRE = "/asgre"
+SLASH_ASGRE1 = "/asgre"
 -- Guild repairs off by default, I noticed someone in the comments on the addon
 -- mentioning that this may be poor early guild etiquette
 use_guild_funds = false
@@ -25,7 +25,7 @@ use_guild_funds = false
 local function ToggleGuildRepairs()
         if use_guild_funds then
                 use_guild_funds = false
-                DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now disabled. ")
+                DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now disabled.")
         else
                 use_guild_funds = true
                 DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now enabled.")
