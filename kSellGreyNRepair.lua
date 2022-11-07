@@ -21,21 +21,21 @@ SLASH_ASGRE = "/asgre"
 use_guild_funds = false
 
 local function ToggleGuildRepairs()
-    if use_guild_funds then
-        use_guild_funds = false
-        DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now disabled. ")
-    else
-        use_guild_funds = true
-        DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now enabled.")
-    end
+        if use_guild_funds then
+            use_guild_funds = false
+            DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now disabled. ")
+        else
+            use_guild_funds = true
+            DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now enabled.")
+        end
 end
 
 SlashCmdList["ASGRE"] = function(msg)
-    -- '/asgre guild' will enable or disable guild repairs depending on current
-    -- state
-    if msg and msg == "guild" then
-        ToggleGuildRepairs(msg)
-    end
+        -- '/asgre guild' will enable or disable guild repairs depending on current
+        -- state
+        if msg and msg == "guild" then
+            ToggleGuildRepairs(msg)
+        end
 end
 
 local function OnEvent(self, event)
