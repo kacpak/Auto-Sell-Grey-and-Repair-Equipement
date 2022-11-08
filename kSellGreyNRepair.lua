@@ -17,6 +17,53 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ]]
 
+localizeMeGuildy = {
+    enUS = "Equipment has been repaired by your Guild for",
+    enGB = "Equipment has been repaired by your Guild for",
+    frFR = "L'équipement a été réparé par votre guilde pendant",
+    deDE = "Ausrüstung wurde von deiner Gilde repariert für",
+    itIT = "L'equipaggiamento è stato riparato dalla tua gilda per",
+    koKR = "길드에서 장비를 수리했습니다",
+    zhCN = "您的公会已为您修理了设备",
+    zhTW = "你的公會已經修理了設備",
+    ruRU = "Оборудование было отремонтировано вашей гильдией за",
+    esES = "El equipo ha sido reparado por tu Gremio por",
+    esMX = "El equipo ha sido reparado por tu Gremio por",
+    ptBR = "O equipamento foi consertado por sua Guilda por",
+}
+
+localizeMePersonally = {
+    enUS = "Equipment has been repaired for",
+    enGB = "Equipment has been repaired for",
+    frFR = "L'équipement a été réparé pour",
+    deDE = "Gerät wurde für repariert",
+    itIT = "L'attrezzatura è stata riparata per",
+    koKR = "에 대한 장비가 수리되었습니다",
+    zhCN = "设备已修复",
+    zhTW = "設備已修復",
+    ruRU = "Оборудование было отремонтировано за",
+    esES = "El equipo ha sido reparado para",
+    esMX = "El equipo ha sido reparado para",
+    ptBR = "O equipamento foi reparado para",
+}
+
+localizeMeVendor = {
+    enUS = "Items were sold for",
+    enGB = "Items were sold for",
+    frFR = "Les articles ont été vendus pour",
+    deDE = "Artikel wurden für verkauft",
+    itIT = "Gli articoli sono stati venduti per",
+    koKR = "에 대해 판매된 항목",
+    zhCN = "物品售价为",
+    zhTW = "物品售價為",
+    ruRU = "Товары были проданы за",
+    esES = "Los artículos se vendieron por",
+    esMX = "Los artículos se vendieron por",
+    ptBR = "Os itens foram vendidos por",
+}
+
+my_locale = GetLocale();
+
 local function OnEvent(self, event)
 	-- Auto Sell Grey Items
 	totalPrice = 0	
@@ -35,7 +82,8 @@ local function OnEvent(self, event)
 		end
 	end
 	if totalPrice ~= 0 then
-		DEFAULT_CHAT_FRAME:AddMessage("Items were sold for "..GetCoinTextureString(totalPrice), 255, 255, 255)
+        output = localizeMeVendor[my_locale]
+		DEFAULT_CHAT_FRAME:AddMessage(output..GetCoinTextureString(totalPrice), 255, 255, 255)
 	end
 
 	-- Auto Repair
@@ -54,14 +102,16 @@ local function OnEvent(self, event)
 				if (amount >= repairAllCost) then
 					RepairAllItems(true);
 					guildRepairedItems = true
-					DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired by your Guild", 255, 255, 255)
+                    output = localizeMeGuildy[my_locale]
+					DEFAULT_CHAT_FRAME:AddMessage(output..GetCoinTextureString(repairAllCost), 255, 255, 255)
 				end
 			end
 			
 			-- Use own funds
 			if (repairAllCost <= GetMoney() and not guildRepairedItems) then
 				RepairAllItems(false);
-				DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired for "..GetCoinTextureString(repairAllCost), 255, 255, 255)
+                localizeMePersonally[my_locale]
+				DEFAULT_CHAT_FRAME:AddMessage(output..GetCoinTextureString(repairAllCost), 255, 255, 255)
 			end
 		end
 	end
