@@ -36,7 +36,7 @@ local function ToggleGuildRepairs()
 end
 
 local function ShowCurrentStatus()
-    DEFAULT_CHAT_FRAME:AddMessage("Guild repairs enabled: "..tostring(useGuildFunds))
+        DEFAULT_CHAT_FRAME:AddMessage("Guild repairs enabled: "..tostring(useGuildFunds))
 end
 
 local function Usage()
@@ -45,25 +45,25 @@ end
 
 SlashCmdList["ASGRE"] = function(msg)
         if string.len(msg) > 0 then
-            -- '/asgre guild' will enable or disable guild repairs depending on current
-            -- state
-            if msg == "guild" then
-                ToggleGuildRepairs()
-            -- '/asgre status' will show the current status of guild repairs
-            elseif msg == "status" then
-                ShowCurrentStatus()
-            else
-                -- No command was given, give them a hint
-                Usage()
-            end
+                -- '/asgre guild' will enable or disable guild repairs depending on current
+                -- state
+                if msg == "guild" then
+                    ToggleGuildRepairs()
+                -- '/asgre status' will show the current status of guild repairs
+                elseif msg == "status" then
+                    ShowCurrentStatus()
+                else
+                    -- No command was given, give them a hint
+                    Usage()
+                end
         else
-            Usage()
+                Usage()
         end
 end
 
 local function OnEvent(self, event)
 	-- Auto Sell Grey Items
-	totalPrice = 0	
+	totalPrice = 0
 	for myBags = 0,4 do
 		for bagSlots = 1, GetContainerNumSlots(myBags) do
 			CurrentItemLink = GetContainerItemLink(myBags, bagSlots)
@@ -83,7 +83,7 @@ local function OnEvent(self, event)
 	end
 
 	-- Auto Repair
-	if (CanMerchantRepair()) then	
+	if (CanMerchantRepair()) then
 		repairAllCost, canRepair = GetRepairAllCost();
 		-- If merchant can repair and there is something to repair
 		if (canRepair and repairAllCost > 0) then
@@ -101,7 +101,7 @@ local function OnEvent(self, event)
 					DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired by your Guild", 255, 255, 255)
 				end
 			end
-			
+
 			-- Use own funds
 			if (repairAllCost <= GetMoney() and not guildRepairedItems) then
 				RepairAllItems(false);
