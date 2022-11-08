@@ -35,11 +35,29 @@ local function ToggleGuildRepairs()
         end
 end
 
+local function ShowCurrentStatus()
+    DEFAULT_CHAT_FRAME:AddMessage("Guild repairs enabled: "..tostring(useGuildFunds))
+end
+
+local function Usage()
+        DEFAULT_CHAT_FRAME:AddMessage("Usage: \n/asgre guild - Toggle guild repairs to enable/disable\n/asgre status - Show the current status of guild repairs")
+end
+
 SlashCmdList["ASGRE"] = function(msg)
-        -- '/asgre guild' will enable or disable guild repairs depending on current
-        -- state
-        if msg and msg == "guild" then
+        if string.len(msg) > 0 then
+            -- '/asgre guild' will enable or disable guild repairs depending on current
+            -- state
+            if msg == "guild" then
                 ToggleGuildRepairs()
+            -- '/asgre status' will show the current status of guild repairs
+            elseif msg == "status" then
+                ShowCurrentStatus()
+            else
+                -- No command was given, give them a hint
+                Usage()
+            end
+        else
+            Usage()
         end
 end
 
