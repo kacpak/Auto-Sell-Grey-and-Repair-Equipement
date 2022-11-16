@@ -73,6 +73,7 @@ local guildRepairCheckButton = CreateFrame("CheckButton", "guildRepairCheckButto
 guildRepairCheckButton:SetPoint("TOPLEFT", 100, -65)
 guildRepairCheckButton_GlobalNameText:SetText("Guild repairs enabled")
 guildRepairCheckButton:tooltip = "Enable guild repairs, if available"
+guildRepairCheckButton:SetChecked(useGuildFunds)
 guildRepairCheckButton:SetScript("OnClick",
     function()
         ToggleGuildRepairs()
