@@ -61,6 +61,24 @@ SlashCmdList["ASGRE"] = function(msg)
         end
 end
 
+local settingsPanel = CreateFrame("Frame")
+settingsPanel.name = "Auto Sell Grey & Repair"
+InterfaceOptions_AddCategory(settingsPanel)
+
+local title = settingsPanel:CreateFontString("ARTWORK", nil, "GameFontNormalLarge")
+title:SetPoint("TOP")
+title:SetText(settingsPanel.name)
+
+local guildRepairCheckButton = CreateFrame("CheckButton", "guildRepairCheckButton_GlobalName", settingsPanel, "ChatConfigCheckButtonTemplate")
+guildRepairCheckButton:SetPoint("TOPLEFT", 100, -65)
+guildRepairCheckButton_GlobalNameText:SetText("Guild repairs enabled")
+guildRepairCheckButton:tooltip = "Enable guild repairs, if available"
+guildRepairCheckButton:SetScript("OnClick",
+    function()
+        ToggleGuildRepairs()
+    end
+)
+
 local function OnEvent(self, event)
 	-- Auto Sell Grey Items
 	totalPrice = 0
