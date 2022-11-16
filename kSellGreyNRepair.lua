@@ -75,9 +75,9 @@ guildRepairCheckButton_GlobalNameText:SetText("Guild repairs enabled")
 guildRepairCheckButton:tooltip = "Enable guild repairs, if available"
 guildRepairCheckButton:SetChecked(useGuildFunds)
 guildRepairCheckButton:SetScript("OnClick",
-    function()
-        ToggleGuildRepairs()
-    end
+        function()
+                ToggleGuildRepairs()
+        end
 )
 
 local function OnEvent(self, event)
