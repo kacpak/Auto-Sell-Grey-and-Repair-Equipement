@@ -74,11 +74,7 @@ guildRepairCheckButton:SetPoint("TOPLEFT", 100, -65)
 guildRepairCheckButton_GlobalNameText:SetText("Guild repairs enabled")
 guildRepairCheckButton:tooltip = "Enable guild repairs, if available"
 guildRepairCheckButton:SetChecked(useGuildFunds)
-guildRepairCheckButton:SetScript("OnClick",
-        function()
-                ToggleGuildRepairs()
-        end
-)
+guildRepairCheckButton:SetScript("OnClick", ToggleGuildRepairs)
 
 local function OnEvent(self, event)
 	-- Auto Sell Grey Items
