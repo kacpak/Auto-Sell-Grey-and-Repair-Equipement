@@ -63,7 +63,6 @@ local guildRepairCheckButton = CreateFrame("CheckButton", "guildRepairCheckButto
 guildRepairCheckButton:SetPoint("TOPLEFT", 100, -65)
 guildRepairCheckButton_GlobalNameText:SetText("Guild repairs enabled")
 guildRepairCheckButton:tooltip = "Enable guild repairs, if available"
-guildRepairCheckButton:SetScript("OnClick", ToggleGuildRepairs)
 
 local function ToggleGuildRepairs()
         if useGuildFunds then
@@ -76,6 +75,8 @@ local function ToggleGuildRepairs()
                 DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now enabled.")
         end
 end
+
+guildRepairCheckButton:SetScript("OnClick", ToggleGuildRepairs)
 
 local function OnEvent(self, event)
     if event == "ADDON_LOADED" then
