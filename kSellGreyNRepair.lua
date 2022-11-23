@@ -17,7 +17,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ]]
 
-local localization = ...
+local localization, my_locale = ...
 
 local function OnEvent(self, event)
 	-- Auto Sell Grey Items
