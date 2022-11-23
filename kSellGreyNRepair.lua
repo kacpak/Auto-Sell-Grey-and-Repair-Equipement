@@ -25,18 +25,6 @@ if useGuildFunds == nil then
         useGuildFunds = false
 end
 
-local function ToggleGuildRepairs()
-        if useGuildFunds then
-                useGuildFunds = false
-                guildRepairCheckButton:SetChecked(useGuildFunds)
-                DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now disabled.")
-        else
-                useGuildFunds = true
-                guildRepairCheckButton:SetChecked(useGuildFunds)
-                DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now enabled.")
-        end
-end
-
 local function ShowCurrentStatus()
         DEFAULT_CHAT_FRAME:AddMessage("Guild repairs enabled: "..tostring(useGuildFunds))
 end
@@ -76,6 +64,18 @@ guildRepairCheckButton:SetPoint("TOPLEFT", 100, -65)
 guildRepairCheckButton_GlobalNameText:SetText("Guild repairs enabled")
 guildRepairCheckButton:tooltip = "Enable guild repairs, if available"
 guildRepairCheckButton:SetScript("OnClick", ToggleGuildRepairs)
+
+local function ToggleGuildRepairs()
+        if useGuildFunds then
+                useGuildFunds = false
+                guildRepairCheckButton:SetChecked(useGuildFunds)
+                DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now disabled.")
+        else
+                useGuildFunds = true
+                guildRepairCheckButton:SetChecked(useGuildFunds)
+                DEFAULT_CHAT_FRAME:AddMessage("Guild repairs are now enabled.")
+        end
+end
 
 local function OnEvent(self, event)
     if event == "ADDON_LOADED" then
