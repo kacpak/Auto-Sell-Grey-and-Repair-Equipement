@@ -43,6 +43,7 @@ local function OnEvent(self, event)
 		repairAllCost, canRepair = GetRepairAllCost();
 		-- If merchant can repair and there is something to repair
 		if (canRepair and repairAllCost > 0) then
+                        costTextureString = GetCoinTextureString(repairAllCost);
 			-- Use Guild Bank
 			guildRepairedItems = false
 			if (IsInGuild() and CanGuildBankRepair()) then
@@ -54,14 +55,14 @@ local function OnEvent(self, event)
 				if (amount >= repairAllCost) then
 					RepairAllItems(true);
 					guildRepairedItems = true
-					DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired by your Guild", 255, 255, 255)
+					DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired by your Guild for "..costTextureString, 255, 255, 255)
 				end
 			end
 			
 			-- Use own funds
 			if (repairAllCost <= GetMoney() and not guildRepairedItems) then
 				RepairAllItems(false);
-				DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired for "..GetCoinTextureString(repairAllCost), 255, 255, 255)
+				DEFAULT_CHAT_FRAME:AddMessage("Equipment has been repaired for "..costTextureString, 255, 255, 255)
 			end
 		end
 	end
