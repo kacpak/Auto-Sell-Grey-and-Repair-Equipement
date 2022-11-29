@@ -21,14 +21,14 @@ local function OnEvent(self, event)
 	-- Auto Sell Grey Items
 	totalPrice = 0	
 	for myBags = 0,4 do
-		for bagSlots = 1, GetContainerNumSlots(myBags) do
-			CurrentItemLink = GetContainerItemLink(myBags, bagSlots)
+		for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
+			CurrentItemLink = C_Container.GetContainerItemLink(myBags, bagSlots)
 			if CurrentItemLink then
 				_, _, itemRarity, _, _, _, _, _, _, _, itemSellPrice = GetItemInfo(CurrentItemLink)
-				_, itemCount = GetContainerItemInfo(myBags, bagSlots)
+				itemInfo = C_Container.GetContainerItemInfo(myBags, bagSlots)
 				if itemRarity == 0 and itemSellPrice ~= 0 then
-					totalPrice = totalPrice + (itemSellPrice * itemCount)
-					UseContainerItem(myBags, bagSlots)
+					totalPrice = totalPrice + (itemSellPrice * itemInfo.stackCount)
+					C_Container.UseContainerItem(myBags, bagSlots)
 					PickupMerchantItem()
 				end
 			end
